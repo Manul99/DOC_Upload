@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Full viewport height
+  background-color: #f8f9fa; // Optional, for contrast
+}
+
+.dropzone {
+  border: 2px dashed #007bff;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  transition: background-color 0.2s ease;
+  width: 400px;
+  position: relative;
+
+  &.dragging {
+    background-color: #e0f7fa;
+  }
+
+  h3 {
+    margin: 10px 0;
+    color: #007bff;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  button {
+    color: white;
+    width: 183px;
+    height: 35px;
+    border-radius: 21.5px;
+    background-color: #007bff;
+    padding: 8px 16px;
+    border-color: #007bff;
+  }
+}
