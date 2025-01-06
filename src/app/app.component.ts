@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DocUploadComponent } from './pages/doc-upload/doc-upload.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'doc_upload';
+  
 }
