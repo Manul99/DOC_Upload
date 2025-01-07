@@ -28,7 +28,11 @@
     <h4>File Previews:</h4>
     <div *ngFor="let preview of filePreviews" class="preview">
       <!-- Image Preview -->
-      <a *ngIf="preview.type === 'image'" [href]="preview.data" target="_blank">
+      <a
+        *ngIf="preview.type === 'image'"
+        (click)="openImage(preview.data)"
+        style="cursor: pointer"
+      >
         <img [src]="preview.data" alt="File Preview" />
       </a>
 
