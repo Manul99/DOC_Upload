@@ -47,6 +47,9 @@
         <a [href]="preview.data" [download]="preview.name">
           <p>{{ preview.name }}</p>
         </a>
+        <div class="file-info">
+          <p class="file-size">{{(uploadedFiles[i].size/1024).toFixed(2)}} KB</p>
+        </div>
         <img
           src="https://img.icons8.com/?size=100&id=QbdYxvBYITkh&format=png&color=000000"
           alt="Remove Icon"
