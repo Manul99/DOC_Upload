@@ -49,13 +49,14 @@ export class DocUploadComponent {
       const fileReader = new FileReader();
       fileReader.onload = () => {
         const isImage = file.type.startsWith('image/');
+        const data = fileReader.result;
         this.filePreviews.push({
-          data: isImage ? fileReader.result : null,
+          data,
           name: file.name,
           type: isImage ? 'image' : 'document'
         });
       };
-      fileReader.readAsDataURL(file); // For images
+      fileReader.readAsDataURL(file); 
     });
   }
 }

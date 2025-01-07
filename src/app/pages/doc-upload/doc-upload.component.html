@@ -27,8 +27,15 @@
   <div class="preview-section" *ngIf="filePreviews.length > 0">
     <h4>File Previews:</h4>
     <div *ngFor="let preview of filePreviews" class="preview">
-      <img *ngIf="preview.type === 'image'" [src]="preview.data" alt="File Preview" />
-      <p *ngIf="preview.type === 'document'">{{ preview.name }}</p>
+      <!-- Image Preview -->
+      <a *ngIf="preview.type === 'image'" [href]="preview.data" target="_blank">
+        <img [src]="preview.data" alt="File Preview" />
+      </a>
+
+      <!-- Document Preview -->
+      <a *ngIf="preview.type === 'document'" [href]="preview.data" [download]="preview.name">
+        <p>{{ preview.name }}</p>
+      </a>
     </div>
   </div>
 </div>
