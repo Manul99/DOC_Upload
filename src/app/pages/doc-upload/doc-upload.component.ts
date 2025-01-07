@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class DocUploadComponent {
   uploadedFiles: File[] = [];
   filePreviews: { data: string | ArrayBuffer | null; name: string; type: string }[] = [];
+  maxFileSize = 300 * 1024; // 300KB
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
@@ -46,6 +47,10 @@ export class DocUploadComponent {
   private handleFiles(files: File[]) {
     this.uploadedFiles = [...this.uploadedFiles, ...files];
     files.forEach((file) => {
+      if(file.size > this.maxFileSize){
+        alert(`${file.name} exceeds the maximum file size limit of 300KB.`);
+        return;
+      }
       const fileReader = new FileReader();
       fileReader.onload = () => {
         const isImage = file.type.startsWith('image/');
