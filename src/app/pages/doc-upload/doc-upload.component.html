@@ -1,4 +1,5 @@
 <div class="container">
+  <!-- Upload Section -->
   <div class="upload-section">
     <div
       class="dropzone"
@@ -24,22 +25,35 @@
     </div>
   </div>
 
+  <!-- Preview Section -->
   <div class="preview-section" *ngIf="filePreviews.length > 0">
-    <h4>File Previews:</h4>
-    <div *ngFor="let preview of filePreviews" class="preview">
+    <h4>Uploaded Files:</h4>
+    <div *ngFor="let preview of filePreviews; let i = index" class="preview">
       <!-- Image Preview -->
-      <a
-        *ngIf="preview.type === 'image'"
-        (click)="openImage(preview.data)"
-        style="cursor: pointer"
-      >
-        <img [src]="preview.data" alt="File Preview" />
-      </a>
+      <div *ngIf="preview.type === 'image'" class="preview-item">
+        <a (click)="openImage(preview.data)" style="cursor: pointer">
+          <img [src]="preview.data" alt="File Preview" class="image-preview" />
+        </a>
+        <img
+          src="https://img.icons8.com/?size=100&id=QbdYxvBYITkh&format=png&color=000000"
+          alt="Remove Icon"
+          class="remove-icon"
+          (click)="removeFile(i)"
+        />
+      </div>
 
       <!-- Document Preview -->
-      <a *ngIf="preview.type === 'document'" [href]="preview.data" [download]="preview.name">
-        <p>{{ preview.name }}</p>
-      </a>
+      <div *ngIf="preview.type === 'document'" class="preview-item">
+        <a [href]="preview.data" [download]="preview.name">
+          <p>{{ preview.name }}</p>
+        </a>
+        <img
+          src="https://img.icons8.com/?size=100&id=QbdYxvBYITkh&format=png&color=000000"
+          alt="Remove Icon"
+          class="remove-icon"
+          (click)="removeFile(i)"
+        />
+      </div>
     </div>
   </div>
 </div>

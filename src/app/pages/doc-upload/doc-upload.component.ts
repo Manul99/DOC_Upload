@@ -65,6 +65,15 @@ export class DocUploadComponent {
     });
   }
 
+  removeFile(index: number): void {
+    // Remove the file preview
+    this.filePreviews.splice(index, 1);
+  
+    // Remove the corresponding file from the uploaded files array
+    this.uploadedFiles.splice(index, 1);
+  }
+  
+
   openImage(data: string | ArrayBuffer | null): void {
     if (typeof data === 'string') {
       const newWindow = window.open();
