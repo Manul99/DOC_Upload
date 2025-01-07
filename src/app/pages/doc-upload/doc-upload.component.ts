@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class DocUploadComponent {
   uploadedFiles: File[] = [];
+  filePreviews: { data: string | ArrayBuffer | null; name: string; type: string }[] = [];
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
@@ -30,7 +31,7 @@ export class DocUploadComponent {
 
     if (event.dataTransfer && event.dataTransfer.files) {
       const files = Array.from(event.dataTransfer.files);
-      this.uploadedFiles = [...this.uploadedFiles, ...files];
+      this.handleFiles(files);
     }
   }
 
@@ -38,7 +39,23 @@ export class DocUploadComponent {
     const input = event.target as HTMLInputElement;
     if (input.files) {
       const files = Array.from(input.files);
-      this.uploadedFiles = [...this.uploadedFiles, ...files];
+      this.handleFiles(files);
     }
+  }
+
+  private handleFiles(files: File[]) {
+    this.uploadedFiles = [...this.uploadedFiles, ...files];
+    files.forEach((file) => {
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        const isImage = file.type.startsWith('image/');
+        this.filePreviews.push({
+          data: isImage ? fileReader.result : null,
+          name: file.name,
+          type: isImage ? 'image' : 'document'
+        });
+      };
+      fileReader.readAsDataURL(file); // For images
+    });
   }
 }

@@ -1,9 +1,17 @@
 .container {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  height: 100vh; /* Full viewport height */
+  background-color: #f8f9fa; /* Optional, for contrast */
+}
+
+.upload-section {
+  flex: 1;
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; // Full viewport height
-  background-color: #f8f9fa; // Optional, for contrast
 }
 
 .dropzone {
@@ -13,7 +21,6 @@
   text-align: center;
   transition: background-color 0.2s ease;
   width: 400px;
-  position: relative;
 
   &.dragging {
     background-color: #e0f7fa;
@@ -22,10 +29,6 @@
   h3 {
     margin: 10px 0;
     color: #007bff;
-  }
-
-  label {
-    cursor: pointer;
   }
 
   button {
@@ -37,4 +40,40 @@
     padding: 8px 16px;
     border-color: #007bff;
   }
+}
+
+.preview-section {
+  flex: 1;
+  margin-left: 20px;
+  text-align: left;
+}
+
+.preview-section h4 {
+  color: #000; /* Black color for "File Previews" heading */
+  margin-bottom: 10px;
+}
+
+.preview {
+  margin-bottom: 20px;
+}
+
+.preview img {
+  max-width: 100px;
+  max-height: 100px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #fff;
+  transition: transform 0.2s ease;
+}
+
+.preview img:hover {
+  transform: scale(1.1); /* Slight zoom-in effect on hover */
+}
+
+.preview p {
+  font-size: 14px;
+  color: #007bff;
+  margin-top: 5px;
+  word-break: break-word; /* Handle long file names */
 }
