@@ -56,7 +56,24 @@ export class DocUploadComponent {
           type: isImage ? 'image' : 'document'
         });
       };
-      fileReader.readAsDataURL(file); 
+      fileReader.readAsDataURL(file); // Reads file as a base64 data URL
     });
+  }
+
+  openImage(data: string | ArrayBuffer | null): void {
+    if (typeof data === 'string') {
+      const newWindow = window.open();
+      if (newWindow) {
+        newWindow.document.write(`
+          <html>
+            <head><title>Image Preview</title></head>
+            <body style="margin:0; display:flex; justify-content:center; align-items:center;">
+              <img src="${data}" style="max-width:100%; max-height:100%;"/>
+            </body>
+          </html>
+        `);
+        newWindow.document.close();
+      }
+    }
   }
 }
