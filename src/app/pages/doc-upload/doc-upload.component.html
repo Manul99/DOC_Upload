@@ -1,24 +1,11 @@
 <div class="container">
+  <h1>Document Upload</h1>
+
   <!-- Upload Section -->
   <div class="upload-section">
-    <div
-      class="dropzone"
-      (dragover)="onDragOver($event)"
-      (dragleave)="onDragLeave($event)"
-      (drop)="onDrop($event)"
-    >
-      <input
-        type="file"
-        #fileInput
-        id="fileInput"
-        multiple
-        (change)="onFileSelect($event)"
-        hidden
-      />
-      <img
-        src="https://img.icons8.com/?size=100&id=4716&format=png&color=000000"
-        alt="Upload Icon"
-      />
+    <div class="dropzone" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+      <input type="file" #fileInput id="fileInput" multiple (change)="onFileSelect($event)" hidden />
+      <img src="https://img.icons8.com/?size=100&id=4716&format=png&color=000000" alt="Upload Icon" />
       <h3>Drag and drop files here</h3>
       <h3>or</h3>
       <button type="button" (click)="fileInput.click()">Browse for files</button>
@@ -34,12 +21,8 @@
         <a (click)="openImage(preview.data)" style="cursor: pointer">
           <img [src]="preview.data" alt="File Preview" class="image-preview" />
         </a>
-        <img
-          src="https://img.icons8.com/?size=100&id=QbdYxvBYITkh&format=png&color=000000"
-          alt="Remove Icon"
-          class="remove-icon"
-          (click)="removeFile(i)"
-        />
+        <img src="https://img.icons8.com/?size=100&id=QbdYxvBYITkh&format=png&color=000000" alt="Remove Icon"
+          class="remove-icon" (click)="removeFile(i)" />
       </div>
 
       <!-- Document Preview -->
@@ -48,14 +31,12 @@
           <p>{{ preview.name }}</p>
         </a>
         <div class="file-info">
-          <p class="file-size">{{(uploadedFiles[i].size/1024).toFixed(2)}} KB</p>
+          <p class="file-size">
+            {{ (uploadedFiles[i].size / 1024).toFixed(2) }} KB
+          </p>
         </div>
-        <img
-          src="https://img.icons8.com/?size=100&id=QbdYxvBYITkh&format=png&color=000000"
-          alt="Remove Icon"
-          class="remove-icon"
-          (click)="removeFile(i)"
-        />
+        <img src="https://img.icons8.com/?size=100&id=QbdYxvBYITkh&format=png&color=000000" alt="Remove Icon"
+          class="remove-icon" (click)="removeFile(i)" />
       </div>
     </div>
   </div>
