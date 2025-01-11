@@ -47,6 +47,7 @@ export class DocUploadComponent {
   private handleFiles(files: File[]) {
     this.uploadedFiles = [...this.uploadedFiles, ...files];
     files.forEach((file) => {
+      // Checking uploaded files are larger than 300KB
       if(file.size > this.maxFileSize){
         alert(`${file.name} exceeds the maximum file size limit of 300KB.`);
         return;
@@ -65,6 +66,7 @@ export class DocUploadComponent {
     });
   }
 
+  // Remove files
   removeFile(index: number): void {
     // Remove the file preview
     this.filePreviews.splice(index, 1);
@@ -73,7 +75,7 @@ export class DocUploadComponent {
     this.uploadedFiles.splice(index, 1);
   }
   
-
+//Open Images in a new tab
   openImage(data: string | ArrayBuffer | null): void {
     if (typeof data === 'string') {
       const newWindow = window.open();
