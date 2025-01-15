@@ -10,6 +10,7 @@ export class DocUploadComponent {
   filePreviews: { data: string | ArrayBuffer | null; name: string; type: string }[] = [];
   maxFileSize = 300 * 1024; // 300KB
 
+  // Drag Over
   onDragOver(event: DragEvent) {
     event.preventDefault();
     event.stopPropagation();
@@ -17,6 +18,7 @@ export class DocUploadComponent {
     dropzone.classList.add('dragging');
   }
 
+  //Drag Leave
   onDragLeave(event: DragEvent) {
     event.preventDefault();
     event.stopPropagation();
@@ -24,6 +26,7 @@ export class DocUploadComponent {
     dropzone.classList.remove('dragging');
   }
 
+  //Remove the drag
   onDrop(event: DragEvent) {
     event.preventDefault();
     event.stopPropagation();
@@ -36,6 +39,7 @@ export class DocUploadComponent {
     }
   }
 
+  
   onFileSelect(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files) {
