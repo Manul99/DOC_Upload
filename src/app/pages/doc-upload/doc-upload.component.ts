@@ -39,7 +39,7 @@ export class DocUploadComponent {
     }
   }
 
-  
+  // Select file 
   onFileSelect(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files) {
@@ -48,18 +48,27 @@ export class DocUploadComponent {
     }
   }
 
+  // Function to handle files uploaded by the user
   private handleFiles(files: File[]) {
+    // Add the uploaded files to the uploadedFiles array
     this.uploadedFiles = [...this.uploadedFiles, ...files];
+    // Loop through each file
     files.forEach((file) => {
       // Checking uploaded files are larger than 300KB
       if(file.size > this.maxFileSize){
+        // Alert the user if the file exceeds the maximum file size limit
         alert(`${file.name} exceeds the maximum file size limit of 300KB.`);
         return;
       }
+      // Create a new FileReader object
       const fileReader = new FileReader();
+      // Set the onload event handler
       fileReader.onload = () => {
+        // Check if the file is an image
         const isImage = file.type.startsWith('image/');
+        // Get the file data
         const data = fileReader.result;
+        // Push the file data to the filePreviews array
         this.filePreviews.push({
           data,
           name: file.name,
