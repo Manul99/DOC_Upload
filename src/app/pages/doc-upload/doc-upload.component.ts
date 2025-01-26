@@ -80,11 +80,8 @@ export class DocUploadComponent {
   }
 
   // Remove files
-  removeFile(index: number): void {
-    // Remove the file preview
-    this.filePreviews.splice(index, 1);
-  
-    // Remove the corresponding file from the uploaded files array
+  removeFile(index: number): void { 
+    this.filePreviews.splice(index, 1);  
     this.uploadedFiles.splice(index, 1);
   }
   
